@@ -1,0 +1,236 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+#wrap{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f4f3ef;color:#1a1a1a;position:relative}
+.hdr{background:#003B28;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.hdr-l h1{font-weight:800;font-size:15px;color:#fff;letter-spacing:.3px}
+.hdr-l p{font-size:10px;color:#00AB29;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
+.hdr-r{display:flex;align-items:center;gap:10px}
+.pill-copa{background:#FF1025;padding:5px 14px;border-radius:99px;font-size:11px;font-weight:700;color:#fff}
+.dl-btn{background:#00AB29;color:#fff;border:none;padding:6px 14px;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px}
+.dl-btn:hover{background:#009922}
+
+.leg-bar{background:#fff;border-bottom:1px solid #e8e7e3;padding:9px 22px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:11px;color:#555}
+.leg{display:flex;align-items:center;gap:5px}
+.ld{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+
+.tabs-bar{padding:14px 22px 0;background:#f4f3ef}
+.tabs-inner{display:flex;gap:0;background:#fff;border-radius:10px;border:1px solid #e0e0db;overflow:hidden}
+.tab{padding:9px 0;font-size:13px;font-weight:600;cursor:pointer;border:none;background:transparent;color:#999;border-bottom:3px solid transparent;flex:1;text-align:center;transition:all .15s}
+.tab:hover:not(.active){background:#f7f7f4;color:#333}
+.tab.active{color:#00AB29;border-bottom-color:#00AB29;background:#f7fdf7}
+
+.main{padding:20px 22px;max-width:1200px;margin:0 auto}
+.mhdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px;flex-wrap:wrap;gap:10px}
+.mt{font-size:42px;font-weight:900;color:#00AB29;text-transform:uppercase;letter-spacing:-2px;line-height:1}
+.ms{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:1.5px;margin-top:5px;font-weight:500}
+.stats{display:flex;gap:8px}
+.stat{background:#fff;border-radius:8px;padding:7px 14px;text-align:center;border:1.5px solid #00AB29}
+.sn{font-weight:900;font-size:20px;color:#00AB29;line-height:1}
+.sl{font-size:9px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+
+.obj{background:#f0faf4;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:11px;color:#444;border:1px solid #c8ecd4;border-left:4px solid #00AB29;border-radius:0 8px 8px 0;line-height:1.65}
+.obj b{color:#00AB29;font-size:10px;text-transform:uppercase;letter-spacing:.8px}
+
+.dh-row{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:4px}
+.dh{text-align:center;font-size:10px;font-weight:700;color:#00AB29;text-transform:uppercase;padding:5px 0;letter-spacing:.5px}
+
+.cgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cell{min-height:90px;border-radius:8px;padding:8px;border:1px solid #e8e7e3;background:#fff;position:relative;transition:transform .12s,box-shadow .12s}
+.cell.emp{background:transparent;border-color:transparent}
+.cell.hp{cursor:pointer}
+.cell.hp:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,59,40,.1);border-color:#b0d4bc}
+.cell.copa{border:2px solid #FF1025;background:#fff}
+.cell.copa:hover{box-shadow:0 4px 14px rgba(255,16,37,.12)}
+.cn{font-size:13px;font-weight:700;color:#ccc;margin-bottom:6px}
+.hp .cn{color:#1a1a1a}
+.ctag{display:block;font-size:8px;font-weight:700;padding:2px 6px;border-radius:3px;margin-bottom:4px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-transform:uppercase;letter-spacing:.4px}
+.ctitle{font-size:9px;color:#555;line-height:1.4;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-weight:500}
+.cbadge{position:absolute;top:6px;right:6px;background:#FF1025;color:#fff;font-size:7px;font-weight:800;padding:1px 5px;border-radius:3px;letter-spacing:.5px}
+
+.ov{display:none;position:absolute;inset:0;background:rgba(0,0,0,.55);z-index:99;align-items:flex-start;justify-content:center;padding:20px}
+.ov.open{display:flex}
+.modal{background:#fff;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.18);max-width:500px;width:100%;padding:24px;position:relative;margin-top:56px;border:1px solid #e0e0db}
+.mx{position:absolute;top:12px;right:12px;background:#f4f3ef;border:1px solid #e0e0db;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;color:#666;display:flex;align-items:center;justify-content:center}
+.mx:hover{background:#e8e7e3}
+.md{font-size:10px;color:#00AB29;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px}
+.mt_{font-size:18px;font-weight:800;color:#1a1a1a;margin-bottom:10px;line-height:1.3}
+.msec{margin-top:13px}
+.mlbl{font-size:9px;font-weight:700;text-transform:uppercase;color:#00AB29;letter-spacing:.8px;margin-bottom:4px}
+.mtxt{font-size:12px;color:#444;line-height:1.65}
+.mcopy{font-size:12px;color:#003B28;font-style:italic;background:#f0faf4;padding:10px 12px;border-radius:6px;border-left:3px solid #00AB29;line-height:1.65;font-weight:500}
+.mplat{font-size:11px;color:#555;background:#f4f3ef;padding:7px 10px;border-radius:6px;line-height:1.5}
+</style>
+
+<div id="wrap">
+<div class="hdr">
+  <div class="hdr-l">
+    <h1>Guaraná Antarctica × Copa 2026</h1>
+    <p>Calendário de conteúdo — "Um Brasil que Torce Junto"</p>
+  </div>
+  <div class="hdr-r">
+    <button class="dl-btn" id="dlbtn"><i class="ti ti-download" aria-hidden="true"></i> Baixar HTML</button>
+    <div class="pill-copa">⚽ Maio – Julho 2026</div>
+  </div>
+</div>
+
+<div class="leg-bar" id="leg"></div>
+
+<div class="tabs-bar">
+  <div class="tabs-inner">
+    <button class="tab active" onclick="go(this,'maio')">Maio</button>
+    <button class="tab" onclick="go(this,'junho')">Junho</button>
+    <button class="tab" onclick="go(this,'julho')">Julho</button>
+  </div>
+</div>
+
+<div class="main">
+  <div class="mhdr">
+    <div><div class="mt" id="mtit"></div><div class="ms" id="msub"></div></div>
+    <div class="stats" id="mst"></div>
+  </div>
+  <div class="obj" id="mobj"></div>
+  <div class="dh-row">
+    <div class="dh">Dom</div><div class="dh">Seg</div><div class="dh">Ter</div>
+    <div class="dh">Qua</div><div class="dh">Qui</div><div class="dh">Sex</div><div class="dh">Sáb</div>
+  </div>
+  <div class="cgrid" id="grid"></div>
+</div>
+
+<div class="ov" id="ov" onclick="if(event.target===this)cls()">
+  <div class="modal">
+    <button class="mx" onclick="cls()">✕</button>
+    <div class="md" id="xd"></div>
+    <div class="mt_" id="xt"></div>
+    <div id="xc" style="margin-bottom:10px"></div>
+    <div class="msec"><div class="mlbl">Formato</div><div class="mtxt" id="xf"></div></div>
+    <div class="msec"><div class="mlbl">Ideia do conteúdo</div><div class="mtxt" id="xi"></div></div>
+    <div class="msec"><div class="mlbl">Copy sugerida</div><div class="mcopy" id="xcp"></div></div>
+    <div class="msec"><div class="mlbl">Plataformas</div><div class="mplat" id="xp"></div></div>
+  </div>
+</div>
+</div>
+
+<script>
+var C={pre:{bg:"#00AB29",fg:"#fff",lb:"Aquecimento"},hype:{bg:"#FFD600",fg:"#5a4400",lb:"Hype / Engajamento"},live:{bg:"#FF1025",fg:"#fff",lb:"Jogos ao Vivo"},soc:{bg:"#00BCD4",fg:"#003540",lb:"Social / Comunidade"},wrk:{bg:"#FF9800",fg:"#3d1e00",lb:"Trabalhadores"},rec:{bg:"#9C27B0",fg:"#fff",lb:"Recap / Encerramento"}};
+var P={
+m06:{d:"06 Mai",t:"Lançamento da Campanha",c:"pre",fm:"Reel + Carrossel | IG & TikTok",id:"Revelar o conceito 'Um Brasil que Torce Junto'. Narração de pessoas reais — periferia, bar de bairro, sala com família reunida. Voz: 'A Copa não mora só nos estádios.'",cp:"A Copa que o Brasil vive tem gosto de Guaraná. Ela acontece aqui — no seu bairro, na sua quadra, na sua mesa.",pl:"Instagram (Feed + Reels) | TikTok | Stories com countdown"},
+m13:{d:"13 Mai",t:"Quadras Comunitárias: o Palco da Copa",c:"soc",fm:"Carrossel | Instagram",id:"Apresentar as quadras ativadas. Antes e depois com telão, som, decoração Guaraná. Depoimento de liderança comunitária.",cp:"Quadra da comunidade vira ponto oficial da Copa. Telão, som e Guaraná — porque todo mundo merece viver esse momento.",pl:"Instagram Feed | Stories com localização"},
+m16:{d:"16 Mai",t:"Os Trabalhadores que Fazem o Brasil",c:"wrk",fm:"Reel documental 60s",id:"Mini-doc com trabalhador real — motoboy, diarista, ambulante. Câmera documental, sem roteiro. Termina com um Guaraná gelado.",cp:"O Lucas trabalha o dia inteiro pra assistir o Brasil à noite. Esse Guaraná é pra ele.",pl:"TikTok | Instagram Reels | YouTube Shorts"},
+m19:{d:"19 Mai",t:"Contagem Regressiva — 23 dias!",c:"hype",fm:"Story interativo + Post animado",id:"Stories com enquete: como vai assistir os jogos? Qual o ritual da sua família? Feed com contador animado.",cp:"23 dias. Você já escolheu sua cadeira? #UmBrasilQueTorceJunto",pl:"Instagram Stories (interativo) | Feed animado"},
+m21:{d:"21 Mai",t:"Os Jeitos de Torcer do Brasil",c:"soc",fm:"Carrossel temático | Instagram",id:"Formas de viver a Copa: sofá, bar, laje, crianças com camisa. Cada slide com frase curta. Tom afetivo.",cp:"No Norte é na laje. No Nordeste é na calçada. No Sul é na churrasqueira. Mas o sabor é sempre o mesmo.",pl:"Instagram Feed | Pinterest"},
+m23:{d:"23 Mai",t:"Mapa das Quadras Ativadas",c:"pre",fm:"Infográfico + Stories",id:"Mapa com cidades e comunidades que terão quadras ativadas durante a Copa.",cp:"Sua comunidade está no mapa? Comenta aí se você vai estar em uma das quadras!",pl:"Instagram Stories | Feed Carrossel"},
+m26:{d:"26 Mai",t:"O Comércio de Bairro na Copa",c:"wrk",fm:"Reel | TikTok & Instagram",id:"Dono de bar se preparando: decorando o espaço, enchendo o freezer de Guaraná, posicionando a TV.",cp:"O Seu Zé já botou o telão, encheu o freezer e pendurou a bandeira. Tá pronto. A Copa é nossa.",pl:"TikTok | Instagram Reels"},
+m28:{d:"28 Mai",t:"Escalação do Torcedor",c:"hype",fm:"Post interativo + Story template",id:"Gamificado: o torcedor monta a escalação do ritual de Copa. Template para compartilhar.",cp:"ESCALAÇÃO DO TORCEDOR — Posição 1: Guaraná Antarctica gelado. Posição 2: ? Comenta o seu time!",pl:"Instagram Stories (template) | Twitter/X"},
+m30:{d:"30 Mai",t:"Histórias Reais — Série #1",c:"soc",fm:"Reel documental 45s",id:"Mãe de família da periferia conta o que a Copa significa. Câmera na mão, depoimento sincero.",cp:"Pra Dona Maria, Copa é o dia que a vizinhança vira família. E a família merece o melhor.",pl:"Instagram Reels | TikTok | YouTube Shorts"},
+j02:{d:"02 Jun",t:"Hype Final — 9 dias para a Copa!",c:"hype",fm:"Reel animado + Stories interativos",id:"Contagem regressiva acelerada: quadras sendo montadas, Guaraná chegando, crianças com camisa do Brasil.",cp:"9 dias. As quadras estão prontas. O Guaraná está gelado. E o Brasil? Tá pronto.",pl:"Instagram Reels | TikTok | Stories"},
+j04:{d:"04 Jun",t:"Making Of — Quadras Sendo Montadas",c:"soc",fm:"Carrossel + Reel bastidores",id:"Bastidores da montagem: telão, decoração, geladeiras de Guaraná chegando. Reação dos moradores.",cp:"A quadra tá virando. O povo já tá olhando. Semana que vem, é Copa aqui.",pl:"Instagram Feed + Stories | TikTok"},
+j06:{d:"06 Jun",t:"Ambulantes e Trabalhadores da Copa",c:"wrk",fm:"Mini-doc 60s | Reel",id:"Ambulantes que trabalham durante a Copa mas também torcem. Como conciliam trabalho e paixão?",cp:"Ele trabalha na Copa. E mesmo assim, vai torcer com tudo. Esse Brasil é de todo mundo.",pl:"TikTok | Instagram Reels | YouTube Shorts"},
+j08:{d:"08 Jun",t:"Faltam 3 dias — o Brasil Parou",c:"hype",fm:"Story + Post animado urgente",id:"Alta energia. Enquete: onde vai assistir o primeiro jogo? Casa / bar / quadra / outro.",cp:"Faltam 3. Última chamada pra definir o esquema. Guaraná no freezer? Local definido?",pl:"Instagram Stories | Twitter/X | TikTok"},
+j10:{d:"10 Jun",t:"Véspera — o Brasil que Vai Torcer",c:"hype",fm:"Reel especial pré-abertura",id:"Últimos preparativos nas quadras, famílias arrumando a casa, comércios se preparando.",cp:"Amanhã o Brasil para. A gente já preparou tudo — o sofá, a mesa, o Guaraná.",pl:"Instagram (Feed + Stories + Reels) | TikTok"},
+j11:{d:"11 Jun — ABERTURA",t:"Ao Vivo — Abertura da Copa",c:"live",copa:1,lb:"ABERTURA",fm:"Stories em tempo real + Post especial",id:"Cobertura ao vivo da abertura pelas quadras comunitárias. Povo reunido, crianças, animação.",cp:"Começou. O Brasil está junto — nas quadras, nos bares, nas salas.",pl:"Instagram Stories (ao vivo) | TikTok Live | Feed"},
+j13:{d:"13 Jun",t:"Quadras ao Vivo — Primeiras Reações",c:"soc",fm:"Reel compilação de reações",id:"Melhores momentos das quadras nos primeiros jogos. Gols, comemorações, abraços.",cp:"Isso é Copa. Não nos estádios — aqui, na nossa quadra, com nossa gente.",pl:"Instagram Reels | TikTok | YouTube Shorts"},
+j16:{d:"16 Jun — BRASIL",t:"Jogo do Brasil #1 — Quadras em Festa",c:"live",copa:1,lb:"BRA",fm:"Cobertura antes, durante e após o jogo",id:"Post de incentivo antes. Stories ao vivo durante. Comemoração após o apito final.",cp:"HOJE É DIA DE BRASIL. A quadra tá cheia. O Guaraná tá gelado. Bora, Seleção!",pl:"Instagram (Feed + Stories + Reels) | TikTok"},
+j18:{d:"18 Jun",t:"Reação da Galera — Compilação Pós-Jogo",c:"rec",fm:"Reel compilação UGC",id:"Compilar vídeos da comunidade via hashtag. Reações espontâneas.",cp:"Você mandou os vídeos, a gente montou a galeria. Esse é o Brasil que a gente ama.",pl:"Instagram Reels | TikTok | Stories com reposts"},
+j20:{d:"20 Jun",t:"A Cozinheira da Torcida",c:"wrk",fm:"Reel documental humanizado",id:"Mulher preparando comida para o jogo. Fala sobre o que a Copa significa.",cp:"Ela acorda cedo, trabalha o dia todo — e ainda capricha no almoço do jogo.",pl:"TikTok | Instagram Reels"},
+j21:{d:"21 Jun — BRASIL",t:"Jogo do Brasil #2",c:"live",copa:1,lb:"BRA",fm:"Cobertura Stories + pré e pós-jogo",id:"Segunda rodada. Pré, ao vivo nos Stories, pós com comemoração.",cp:"De novo! O Brasil entra em campo e a gente tá junto.",pl:"Instagram (Feed + Stories) | TikTok | YouTube Shorts"},
+j23:{d:"23 Jun",t:"Galeria das Quadras — Semana 2",c:"soc",fm:"Carrossel foto-documental",id:"Galeria fotográfica das quadras: crianças, idosos, jovens, famílias.",cp:"Cada rosto aqui tem uma história. E todos compartilham um Guaraná.",pl:"Instagram Feed | Pinterest"},
+j25:{d:"25 Jun",t:"Essa Copa É Nossa — Manifesto",c:"hype",fm:"Post manifesto + Reel emocional",id:"Reforço do conceito. Copa no Brasil real — periferias, comércios, comunidades.",cp:"Essa Copa não tá só na TV. Ela tá aqui — em cada gol na quadra, em cada Guaraná gelado.",pl:"Instagram (Feed + Reels) | TikTok"},
+j26:{d:"26 Jun — BRASIL",t:"Jogo do Brasil #3 — Classificação!",c:"live",copa:1,lb:"BRA",fm:"Cobertura máxima completa",id:"Terceiro jogo. Classificação. Stories ao vivo com reações nas quadras.",cp:"CLASSIFICAÇÃO em jogo. A quadra tá lotada. BORA, BRASIL!",pl:"Instagram | TikTok | Twitter/X em tempo real"},
+j27:{d:"27 Jun",t:"Brasil Classificado! — Celebração",c:"rec",fm:"Reel comemorativo",id:"Compilação das comemorações após a classificação. Tom de celebração coletiva.",cp:"CLASSIFICADOS. E a festa foi nas quadras, nos bares, nas ruas.",pl:"Instagram Reels | TikTok | YouTube Shorts"},
+j30:{d:"30 Jun",t:"Histórias Reais — Série #2",c:"soc",fm:"Mini-doc 60s",id:"Jovem de periferia que cresceu nessa quadra, agora vê o Brasil no mata-mata.",cp:"Ele cresceu nessa quadra. Agora ela tá diferente — mas o sentimento é o mesmo.",pl:"TikTok | Instagram Reels | YouTube Shorts"},
+jul01:{d:"01 Jul",t:"Mata-Mata Começa — Nova Fase!",c:"hype",fm:"Post de transição + Story",id:"Virada para o mata-mata. Chaveamento. Tom de expectativa crescente.",cp:"Fase de grupos? Passado. Agora é mata-mata. Cada jogo vale uma Copa.",pl:"Instagram Feed | Stories | Twitter/X"},
+jul05:{d:"05 Jul — BRASIL",t:"Brasil nas Oitavas de Final",c:"live",copa:1,lb:"BRA",fm:"Cobertura completa — alta intensidade",id:"Primeiro mata-mata: pré-jogo emocional, ao vivo nas quadras, compilação pós.",cp:"É mata-mata. É Brasil. É nas quadras com a galera.",pl:"Todas as plataformas — máxima ativação"},
+jul07:{d:"07 Jul",t:"Emoção nas Quadras",c:"soc",fm:"Reel emocional compilação",id:"Momentos emocionantes: choro de alegria, abraços, crianças pulando, idosos emocionados.",cp:"Isso não tem preço. E acontece todo jogo, nas quadras da nossa campanha.",pl:"Instagram Reels | TikTok | YouTube Shorts"},
+jul09:{d:"09 Jul — BRASIL",t:"Brasil nas Quartas de Final",c:"live",copa:1,lb:"BRA",fm:"Cobertura máxima",id:"Quartas. Tensão máxima. Stories ao vivo em tempo real. Pós-jogo.",cp:"QUARTAS. A quadra nunca esteve tão cheia. O Brasil nunca esteve tão perto. BORA!",pl:"Todas as plataformas"},
+jul11:{d:"11 Jul",t:"Tributo: Quem Faz a Copa Acontecer",c:"wrk",fm:"Carrossel tributo",id:"Tributo: motoboy, cozinheira, dono do bar, ambulante, liderança comunitária.",cp:"A Copa é dos jogadores. Mas também é deles: trabalhadores, torcedores, o Brasil real.",pl:"Instagram Feed (Carrossel) | LinkedIn"},
+jul14:{d:"14 Jul — BRASIL",t:"Brasil na Semifinal",c:"live",copa:1,lb:"SEMI",fm:"Cobertura histórica especial",id:"Semifinal. Gerações diferentes nas quadras — avós e netos.",cp:"SEMI. Avó, filho, neto — todo mundo com o coração na mão e o Guaraná na mão.",pl:"Todas as plataformas — cobertura especial"},
+jul16:{d:"16 Jul",t:"Galeria Final das Quadras",c:"soc",fm:"Carrossel especial — ensaio fotográfico",id:"Melhores imagens de toda a Copa nas quadras. Diversidade, emoção, impacto social.",cp:"De Maio a Julho, essas quadras guardaram história. Aqui está uma parte dela.",pl:"Instagram Feed | Pinterest | LinkedIn"},
+jul18:{d:"18 Jul",t:"Véspera da Final — o Brasil Respira",c:"hype",fm:"Reel especial pré-final",id:"Brasil se preparando: decoração, comida, família, quadras cheias.",cp:"Amanhã é a Final. O Brasil vai parar — nas quadras, nas salas, nos bares, nas ruas.",pl:"Instagram (Feed + Reels + Stories) | TikTok"},
+jul19:{d:"19 Jul — FINAL",t:"Final da Copa do Mundo",c:"live",copa:1,lb:"FINAL",fm:"Cobertura histórica total — todas as plataformas",id:"A grande final. Lives nas quadras, Stories em tempo real, post de abertura e encerramento.",cp:"É hoje. A Copa termina. Mas o que foi construído — nas quadras, nas comunidades — ficou pra sempre.",pl:"TODAS AS PLATAFORMAS — máxima ativação"},
+jul20:{d:"20 Jul",t:"Encerramento da Campanha",c:"rec",fm:"Reel especial de encerramento",id:"Compilação dos melhores momentos: quadras, pessoas, histórias, gols, abraços.",cp:"A Copa acabou. Mas o Brasil que vimos aqui — esse não acaba. Obrigado por torcer junto.",pl:"Instagram (Feed + Reels) | TikTok | YouTube | LinkedIn"},
+jul23:{d:"23 Jul",t:"O Legado das Quadras",c:"rec",fm:"Post especial de impacto + Carrossel",id:"Legado: pessoas atendidas, comunidades beneficiadas, depoimentos finais dos moradores.",cp:"As quadras continuam. As histórias ficaram. O Guaraná esteve aqui — e vai continuar sendo do Brasil real.",pl:"Instagram Feed | LinkedIn | Imprensa / PR"}
+};
+var M={
+maio:{t:"Maio",s:"Aquecimento — Contagem Regressiva para a Copa",st:[{n:9,l:"Posts"},{n:4,l:"Reels"},{n:4,l:"Stories"}],o:"Apresentar o conceito da campanha, revelar as quadras comunitárias e construir expectativa com as classes C, D e E no centro da narrativa.",sd:5,dy:31,ev:{6:"m06",13:"m13",16:"m16",19:"m19",21:"m21",23:"m23",26:"m26",28:"m28",30:"m30"}},
+junho:{t:"Junho",s:"Copa começa 11/06 — Máxima Intensidade",st:[{n:16,l:"Posts"},{n:8,l:"Reels"},{n:12,l:"Stories"}],o:"Copa começa 11/06 — Fase de grupos + ativação máxima nas quadras. Alta frequência nos dias de jogo do Brasil. Cobertura ao vivo.",sd:1,dy:30,ev:{2:"j02",4:"j04",6:"j06",8:"j08",10:"j10",11:"j11",13:"j13",16:"j16",18:"j18",20:"j20",21:"j21",23:"j23",25:"j25",26:"j26",27:"j27",30:"j30"}},
+julho:{t:"Julho",s:"Mata-mata + Final 19/07 — Encerramento da Campanha",st:[{n:12,l:"Posts"},{n:6,l:"Reels"},{n:8,l:"Stories"}],o:"Mata-mata + Final 19/07 — Máxima emoção. Culminação das histórias das quadras + encerramento com legado social da campanha.",sd:3,dy:31,ev:{1:"jul01",5:"jul05",7:"jul07",9:"jul09",11:"jul11",14:"jul14",16:"jul16",18:"jul18",19:"jul19",20:"jul20",23:"jul23"}}
+};
+var cur="maio";
+
+function buildLeg(){
+  var el=document.getElementById("leg");
+  el.innerHTML="";
+  Object.keys(C).forEach(function(k){
+    var v=C[k];
+    el.innerHTML+='<div class="leg"><div class="ld" style="background:'+v.bg+'"></div>'+v.lb+'</div>';
+  });
+}
+
+function go(btn,m){
+  cur=m;
+  document.querySelectorAll(".tab").forEach(function(t){t.classList.remove("active");});
+  btn.classList.add("active");
+  render();
+}
+
+function render(){
+  var m=M[cur];
+  document.getElementById("mtit").textContent=m.t;
+  document.getElementById("msub").textContent=m.s;
+  document.getElementById("mobj").innerHTML="<b>Objetivo:</b> "+m.o;
+  var st=document.getElementById("mst");
+  st.innerHTML="";
+  m.st.forEach(function(s){
+    st.innerHTML+='<div class="stat"><div class="sn">'+s.n+'</div><div class="sl">'+s.l+'</div></div>';
+  });
+  var g=document.getElementById("grid");
+  var h="";
+  for(var i=0;i<m.sd;i++) h+='<div class="cell emp"></div>';
+  for(var d=1;d<=m.dy;d++){
+    var k=m.ev[d];
+    var p=k?P[k]:null;
+    var ic=p&&p.copa;
+    var cl="cell"+(p?" hp":"")+(ic?" copa":"");
+    var inn='<div class="cn">'+d+'</div>';
+    if(p){
+      var cv=C[p.c];
+      if(ic) inn+='<div class="cbadge">'+p.lb+'</div>';
+      inn+='<span class="ctag" style="background:'+cv.bg+';color:'+cv.fg+'">'+cv.lb+'</span>';
+      inn+='<div class="ctitle">'+p.t+'</div>';
+    }
+    h+='<div class="'+cl+'"'+(p?' onclick="op(\''+k+'\')"':'')+'>'+inn+'</div>';
+  }
+  g.innerHTML=h;
+}
+
+function op(k){
+  var p=P[k]; if(!p) return;
+  var cv=C[p.c];
+  document.getElementById("xd").textContent=p.d;
+  document.getElementById("xt").textContent=p.t;
+  document.getElementById("xc").innerHTML='<span style="display:inline-block;background:'+cv.bg+';color:'+cv.fg+';font-size:11px;font-weight:700;padding:3px 10px;border-radius:5px">'+cv.lb+'</span>';
+  document.getElementById("xf").textContent=p.fm;
+  document.getElementById("xi").textContent=p.id;
+  document.getElementById("xcp").textContent=p.cp;
+  document.getElementById("xp").textContent=p.pl;
+  document.getElementById("ov").classList.add("open");
+}
+
+function cls(){document.getElementById("ov").classList.remove("open");}
+
+document.getElementById("dlbtn").addEventListener("click",function(){
+  document.getElementById("ov").classList.remove("open");
+  var h="<!DOCTYPE html>\n"+document.documentElement.outerHTML;
+  h=h.replace(/id="dlbtn"[^>]*>[^<]*<\/button>/,'id="dlbtn" style="display:none">');
+  var b=new Blob([h],{type:"text/html;charset=utf-8"});
+  var a=document.createElement("a");
+  a.href=URL.createObjectURL(b);
+  a.download="calendario_guarana_copa2026_light.html";
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+
+buildLeg();
+render();
+</script>
